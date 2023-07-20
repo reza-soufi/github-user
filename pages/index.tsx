@@ -12,9 +12,17 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main>
-          <Link href="/defunkt">
-              <button> صفحه جستجوی کاربر </button>
-          </Link>
+          <div className={styles.header}>
+              <h1> صفحه اصلی جستجوی کاربر </h1>
+          </div>
+         <div className={styles.btn_box}>
+             <Link href="/defunkt">
+                 <button> صفحه جستجوی کاربر </button>
+             </Link>
+             <Link href="/most-popular">
+                 <button> لیست ریپو ها با بیشترین ستاره </button>
+             </Link>
+         </div>
       </main>
     </>
   )
