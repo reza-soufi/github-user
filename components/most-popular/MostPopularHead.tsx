@@ -17,7 +17,7 @@ const MostPopularHead:FC<Props> = ({getSearch}) => {
         <>
             <section className={styles.form_content}>
                 <div className={styles.form_container}>
-                    <h2 className={styles.topic}> نام کاربر را جستجو کنید </h2>
+                    <h2 className={styles.topic}> نام ریپو را جستجو کنید </h2>
                     <input type="text" value={searchValue} onChange={handleChange} className={styles.input}/>
                 </div>
             </section>
