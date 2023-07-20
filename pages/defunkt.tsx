@@ -1,5 +1,5 @@
 import styles from "../styles/defunkt.module.scss";
-import {useState} from "react";
+import { useState} from "react";
 import {
     Formik,
     Form,
@@ -10,6 +10,7 @@ import * as Yup from "yup";
 import Head from "next/head";
 
 import UserInfo from "@/components/user-info";
+import Loading from "@/components/loading";
 
 import type UserType from "@/types/user.type";
 
@@ -21,19 +22,23 @@ interface MyFormValues {
 const Defunkt = () => {
     const [data, setData] = useState<UserType>();
     const [error , setError ] = useState();
+    const [loading , setLoading] = useState<boolean>(false);
     const initialValues: MyFormValues = { name: '' };
 
 
-    const handleSubmit = (values , {resetForm}) => {
+    const handleSubmit = async (values , {resetForm}) => {
        try {
+           setLoading(true);
            resetForm();
-           axios(`https://api.github.com/users/${values.name}`)
+           await axios(`https://api.github.com/users/${values.name}`)
                .then(data => setData(data.data))
                .catch((e) => {
                    setError(e.response)
                })
        }catch (e) {
            console.log(e.message)
+       }finally {
+           setLoading(false);
        }
     }
 
@@ -62,7 +67,7 @@ const Defunkt = () => {
                   )}
               </Formik>
           </section>
-            {data ? <UserInfo data={data} /> : error?.status === 404 ? <p className={styles.search_user}> کاربر پیدا نشد </p> : <p className={styles.search_user}> کاربر مورد نظر را جستجو کنید </p>}
+            {loading ? <Loading /> : data ? <UserInfo data={data} /> : error?.status === 404 ? <p className={styles.search_user}> کاربر پیدا نشد </p> : <p className={styles.search_user}> کاربر مورد نظر را جستجو کنید </p>}
         </>
     );
 };

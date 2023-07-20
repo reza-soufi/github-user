@@ -1,6 +1,6 @@
 .container{
   margin: 50px auto;
-  width: 600px;
+  width: 1000px;
   direction: rtl;
   display: flex;
   justify-content: center;
@@ -22,6 +22,21 @@
     span{
       font-weight: 700;
       margin-right: 14px;
+    }
+  }
+  .rpoes_topic{
+    margin: 20px 0;
+  }
+  .rpos_box{
+    display: flex;
+    justify-content: space-between;
+    width: 1000px;
+    border: 1px solid;
+    padding: 1rem;
+    border-radius: 10px;
+    margin-bottom: 12px;
+    h3{
+      width: 300px;
     }
   }
 }
