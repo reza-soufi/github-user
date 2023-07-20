@@ -1,9 +1,12 @@
 import {FC} from 'react';
-import styles from "./user-info.module.scss";
 import Image from "next/image";
 
+import styles from "./user-info.module.scss";
+
+import type UserType from "@/types/user.type";
+
 type Props = {
-    data: any;
+    data: UserType;
 }
 
 const UserInfo: FC<Props> = ({data}) => {

@@ -7,8 +7,11 @@ import {
 } from 'formik';
 import axios from "axios";
 import * as Yup from "yup";
-import UserInfo from "@/components/user-info";
 import Head from "next/head";
+
+import UserInfo from "@/components/user-info";
+
+import type UserType from "@/types/user.type";
 
 
 interface MyFormValues {
@@ -16,8 +19,8 @@ interface MyFormValues {
 }
 
 const Defunkt = () => {
-    const [data, setData] = useState();
-    const [error , setError ] = useState()
+    const [data, setData] = useState<UserType>();
+    const [error , setError ] = useState();
     const initialValues: MyFormValues = { name: '' };
 
 
@@ -33,7 +36,6 @@ const Defunkt = () => {
            console.log(e.message)
        }
     }
-    console.log(data);
 
     return (
         <>
