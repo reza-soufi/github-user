@@ -1,0 +1,27 @@
+.container{
+  margin: 50px auto;
+  width: 600px;
+  direction: rtl;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  .img_box{
+    position: relative;
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    img{
+      border-radius: 50%;
+    }
+  }
+  .title{
+    margin-top: 30px;
+    font-size: 16px;
+    font-weight: 500;
+    span{
+      font-weight: 700;
+      margin-right: 14px;
+    }
+  }
+}
