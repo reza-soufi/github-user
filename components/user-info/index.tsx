@@ -1,15 +1,32 @@
-import {FC} from 'react';
+import {FC, useEffect, useState} from 'react';
+import axios from "axios";
 import Image from "next/image";
 
-import styles from "./user-info.module.scss";
-
 import type UserType from "@/types/user.type";
+import UserRepos from "@/components/user-info/UserRepos";
+
+import styles from "./user-info.module.scss";
 
 type Props = {
     data: UserType;
 }
 
 const UserInfo: FC<Props> = ({data}) => {
+    const [repos, setRepos] = useState();
+
+    const getRepos = async () => {
+        try {
+            await axios(data.repos_url)
+                .then(data => setRepos(data.data))
+        }catch (e) {
+
+        }
+    }
+
+    useEffect(() => {
+        getRepos();
+    } , [repos]);
+
     return (
         <div className={styles.container}>
             {
@@ -26,6 +43,7 @@ const UserInfo: FC<Props> = ({data}) => {
                     <div> کاربر پیدا نشد </div>
                 )
             }
+            <UserRepos repos={repos} />
         </div>
     );
 };
